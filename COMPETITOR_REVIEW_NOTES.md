@@ -33,13 +33,14 @@ These are direction signals from the review pages sampled, not a claim that all 
 - Added an optional HTTPS profile photo URL; public pages fall back to initials when no image is set or the image fails.
 - Added JSON backup export/import. Import keeps the existing username and publish state; the creator must explicitly save afterwards.
 - Added six reusable color presets, eight gradient presets, live angle control, light/dark mode, solid/glass/outline button styles, three corner radii, and preview; public profile rendering uses saved style and radius.
+- Added a `Continue with Google` account-picker flow to the deployed dashboard, keeping email/password as a fallback. Firebase Google provider activation awaits a confirmed public support email.
 - Published the dashboard and public profile pages through GitHub Pages; fixed a disabled signed-out auth form and removed stale theme-mode references that could stop dashboard initialization.
 - Tightened Firestore schema validation for the new public avatar URL.
 - Removed a decorative non-functional reorder control from each link row.
 
 ## BioMi self-rating today
 
-**5/10 for launch readiness.** The deployed editor and public profile cover the basic job and have expanded theme controls, reorderable links, drafts and username URLs. Photo URLs and backup/restore improve profile ownership. Firebase, Email/Password auth, and GitHub Pages hosting are configured. The score stays mid-range because authenticated end-to-end flows have not been verified, the latest Firestore rules still need publishing before theme style/radius can save, Google sign-in awaits a chosen public support email, and there is no analytics, custom domain, content blocks/forms/store. This score rates the current repository build against the competitor baseline; it is not a rating of the idea.
+**5/10 for launch readiness.** The deployed editor and public profile cover the basic job and have expanded theme controls, reorderable links, drafts and username URLs. Photo URLs and backup/restore improve profile ownership. Firebase, Email/Password auth, and GitHub Pages hosting are configured. The score stays mid-range because authenticated end-to-end flows have not been verified, the owner reports publishing the latest Firestore rules, but that state is not independently verified; Firebase Google provider activation awaits a chosen public support email, and there is no analytics, custom domain, content blocks/forms/store. This score rates the current repository build against the competitor baseline; it is not a rating of the idea.
 
 ## Best next priorities
 
