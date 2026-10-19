@@ -32,21 +32,22 @@ These are direction signals from the review pages sampled, not a claim that all 
 
 - Added an optional HTTPS profile photo URL; public pages fall back to initials when no image is set or the image fails.
 - Added JSON backup export/import. Import keeps the existing username and publish state; the creator must explicitly save afterwards.
-- Kept the current editor’s gradient color controls, light/dark modes, reorderable links, live preview and stable username page.
+- Added six reusable color presets, eight gradient presets, live angle control, light/dark mode, solid/glass/outline button styles, three corner radii, and preview; public profile rendering uses saved style and radius.
+- Published the dashboard and public profile pages through GitHub Pages; fixed a disabled signed-out auth form and removed stale theme-mode references that could stop dashboard initialization.
 - Tightened Firestore schema validation for the new public avatar URL.
 - Removed a decorative non-functional reorder control from each link row.
 
 ## BioMi self-rating today
 
-**5/10 for launch readiness.** The editor and public profile cover the basic job and have theme controls, reorderable links, drafts and username URLs. Photo URLs and backup/restore improve profile ownership. A separate no-cost Firebase project, Firestore database/rules, Email/Password auth, and GitHub Pages authorized domain are now configured. The score stays mid-range because the branch is not deployed, authenticated end-to-end flows have not been verified in the live UI, Google sign-in awaits a chosen public support email, and there is no analytics, custom domain, content blocks/forms/store. This score rates the current repository build against the competitor baseline; it is not a rating of the idea.
+**5/10 for launch readiness.** The deployed editor and public profile cover the basic job and have expanded theme controls, reorderable links, drafts and username URLs. Photo URLs and backup/restore improve profile ownership. Firebase, Email/Password auth, and GitHub Pages hosting are configured. The score stays mid-range because authenticated end-to-end flows have not been verified, the latest Firestore rules still need publishing before theme style/radius can save, Google sign-in awaits a chosen public support email, and there is no analytics, custom domain, content blocks/forms/store. This score rates the current repository build against the competitor baseline; it is not a rating of the idea.
 
 ## Best next priorities
 
 | Priority | Work | Reason / dependency |
 |---|---|---|
-| 1 | Real analytics API with per-profile/per-link events, abuse controls and retention limits | A meaningful competitor baseline, but must be a trusted server-side path. Do not accept arbitrary public counter writes in Firestore rules. Firebase project is ready; implementation still needs a trusted backend deployment decision. |
+| 1 | Publish the updated Firestore rules and verify account creation, save, publish, public view, and unpublish end to end | Ensures new theme fields work under the production schema and tests the critical flow before adding features. |
 | 2 | Link sections and social platform buttons | Improves scanning and gives creators a better multi-link page without pretending to be a full store. |
-| 3 | More theme choices: button shape/style, typography and reusable presets | Direct response to generic-page complaints and the existing BioMi theme-editor direction. |
+| 3 | More theme choices: typography and accessible contrast checks | Presets, gradients, button style, and corners are now in the editor; type choices and contrast validation remain. |
 | 4 | Custom domain and predictable profile URLs | Portability and brand control; requires DNS verification and domain infrastructure. |
 | 5 | Embed/form/product blocks | Add selectively after link editor and analytics are stable; payment handling adds operational and compliance work. |
 
