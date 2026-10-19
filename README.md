@@ -124,14 +124,14 @@ const CONFIG = {
 
 ## BioMi Creator MVP (feature branch)
 
-The current `main` page is a static personal link page. The feature branch also contains an early creator dashboard and Firebase-backed MVP source:
+The current `main` page is a static personal link page. The feature branch contains the creator dashboard and Firebase-backed MVP:
 
-- `dashboard.html` — sign in, edit a profile, add/reorder links, choose colors, set an HTTPS profile photo, export/import a JSON backup, and publish.
-- `profile.html?u=<username>` — public profile for a published username.
-- `firebase-config.js` — paste in the Firebase Web app config.
-- `firestore.rules` — owner-only edits and read access for published pages.
-- `FIREBASE_SETUP.md` — setup and verification steps.
-- `COMPETITOR_REVIEW_NOTES.md` — public review scan, evidence limits, product gaps, and next priorities.
+- `dashboard.html` — email/password sign-in, profile editing, reorderable links, theme colors, HTTPS photo URL, JSON backup/restore, and publishing.
+- `profile.html?u=<username>` — public page for a published profile.
+- `firebase-config.js` — BioMi Firebase Web app config (public client identifiers only).
+- `firebase-client.js` — initializes Firebase Auth and Firestore when configured.
+- `firestore.rules` — owner-only writes and draft reads; public reads for published profiles.
+- `FIREBASE_SETUP.md` — live project configuration and verification checklist.
+- `COMPETITOR_REVIEW_NOTES.md` — public review scan, evidence limits, gaps, and priorities.
 
-These files require Firebase Authentication and Firestore to be configured. They are on `feature/theme-customizer-preview` and are not on `main` or deployed yet. The first version does not include analytics or avatar uploads. Profile photo URLs and JSON backup/restore are supported; uploads are not. See the review notes for the next feature priorities.
-
+A separate Firebase project (`biomi-9ef92`) is configured on the Spark no-cost plan. Firestore is in Delhi (`asia-south2`), production rules are published, Email/Password sign-in is enabled, and `pansum21.github.io` is an authorized domain. Google sign-in remains off until the owner chooses a support email to display to users. The feature branch is not yet on `main` or deployed. Analytics, image uploads, and custom domains are not included in this MVP.
