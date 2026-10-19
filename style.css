@@ -646,3 +646,8 @@ body {
     height: 40px;
   }
 }
+
+
+/* Theme Studio entry */
+.top-nav { align-items: center; gap: 10px; }
+.theme-nav-btn { width: auto; min-width: 40px; padding: 0 12px; gap: 7px; border-radius: 9px; color: var(--text-primary); text-decoration: none; font-size: 12px; font-weight: 650; }
