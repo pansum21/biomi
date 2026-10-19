@@ -120,3 +120,16 @@ const CONFIG = {
   vnd.youtube://watch?v=VIDEO_ID
   ```
   When tapped on iOS, Safari checks for the registered handler for `vnd.youtube`. If the YouTube app is installed, it opens. If not, the JavaScript timer detects that the page remains visible (`document.hidden === false`) and triggers navigation to the regular HTTPS URL.
+
+
+## BioMi Creator MVP (feature branch)
+
+The current `main` page is a static personal link page. The feature branch also contains an early creator dashboard and Firebase-backed MVP source:
+
+- `dashboard.html` — sign in, edit a profile, add/reorder links, choose colors, and publish.
+- `profile.html?u=<username>` — public profile for a published username.
+- `firebase-config.js` — paste in the Firebase Web app config.
+- `firestore.rules` — owner-only edits and read access for published pages.
+- `FIREBASE_SETUP.md` — setup and verification steps.
+
+These files require Firebase Authentication and Firestore to be configured. They are on `feature/theme-customizer-preview` and are not on `main` or deployed yet. The first version does not include analytics or avatar uploads.
