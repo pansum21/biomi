@@ -6,13 +6,16 @@ service cloud.firestore {
       function ownsCurrent() { return signedIn() && resource.data.ownerUid == request.auth.uid; }
       function validProfile() {
         return request.resource.data.keys().hasOnly([
-          'slug', 'ownerUid', 'displayName', 'bio', 'location', 'links', 'theme', 'published', 'updatedAt'
+          'slug', 'ownerUid', 'displayName', 'avatarUrl', 'bio', 'location', 'links', 'theme', 'published', 'updatedAt'
         ])
         && request.resource.data.slug == slug
         && slug.matches('^[a-z0-9-]{3,30}$')
         && request.resource.data.ownerUid is string
         && request.resource.data.displayName is string
         && request.resource.data.displayName.size() <= 60
+        && request.resource.data.avatarUrl is string
+        && request.resource.data.avatarUrl.size() <= 500
+        && (request.resource.data.avatarUrl == '' || request.resource.data.avatarUrl.matches('^https://[^ ]+$'))
         && request.resource.data.bio is string
         && request.resource.data.bio.size() <= 160
         && request.resource.data.location is string
@@ -45,3 +48,4 @@ service cloud.firestore {
     }
   }
 }
+
