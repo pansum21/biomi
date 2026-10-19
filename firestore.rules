@@ -23,7 +23,7 @@ service cloud.firestore {
         && request.resource.data.links is list
         && request.resource.data.links.size() <= 25
         && request.resource.data.theme is map
-        && request.resource.data.theme.keys().hasOnly(['a', 'b', 'angle', 'mode'])
+        && request.resource.data.theme.keys().hasOnly(['a', 'b', 'angle', 'mode', 'style', 'radius'])
         && request.resource.data.theme.a is string
         && request.resource.data.theme.a.matches('^#[0-9a-fA-F]{6}$')
         && request.resource.data.theme.b is string
@@ -32,6 +32,8 @@ service cloud.firestore {
         && request.resource.data.theme.angle >= 0
         && request.resource.data.theme.angle <= 360
         && request.resource.data.theme.mode in ['light', 'dark']
+        && (!('style' in request.resource.data.theme) || request.resource.data.theme.style in ['solid', 'glass', 'outline'])
+        && (!('radius' in request.resource.data.theme) || request.resource.data.theme.radius in ['3px', '9px', '16px'])
         && request.resource.data.published is bool;
       }
       allow get: if (signedIn() && !exists(/databases/$(database)/documents/profiles/$(slug)))
