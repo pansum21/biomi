@@ -18,15 +18,15 @@ The Firebase Web SDK config is in `firebase-config.js`. Firebase client config v
 
 ## Deploy and use the MVP
 
-1. Merge or deploy the `feature/theme-customizer-preview` branch to the chosen web host.
-2. Open `dashboard.html`, create an account with email/password, and save a draft.
-3. Publish the profile to make it available at `https://<host>/profile.html?u=<username>`.
+1. Open the deployed dashboard at `https://pansum21.github.io/biomi/dashboard.html`.
+2. Create an account with email/password, save a draft, then publish to get `https://pansum21.github.io/biomi/profile.html?u=<username>`.
+3. Publish the latest repository `firestore.rules` in Firebase Console before saving themes with button style and corner radius. The earlier live rules only allow the original color/mode fields.
 
 The username is claimed once and remains fixed in this MVP. Draft pages are private; published pages are readable without signing in. Owners can edit or unpublish their own profile.
 
 ## Firestore profile shape
 
-`profiles/{username}` contains `slug`, `ownerUid`, `displayName`, optional public `avatarUrl`, `bio`, `location`, `links`, `theme`, `published`, and `updatedAt`. Do not add email addresses or other private fields to this public profile document. The avatar field accepts an HTTPS image URL; it does not upload a file.
+`profiles/{username}` contains `slug`, `ownerUid`, `displayName`, optional public `avatarUrl`, `bio`, `location`, `links`, `theme`, `published`, and `updatedAt`. The theme stores colors (`a`, `b`), angle, mode, and optional button style (`solid`, `glass`, `outline`) and radius (`3px`, `9px`, `16px`). Do not add email addresses or other private fields to this public profile document. The avatar field accepts an HTTPS image URL; it does not upload a file.
 
 ## Verification checklist
 
@@ -38,4 +38,4 @@ The username is claimed once and remains fixed in this MVP. Draft pages are priv
 - Profile photos load only from HTTPS URLs and fall back to initials if the image fails.
 - Export a JSON backup, import it, save it, and confirm the username and publish status are preserved.
 
-These authenticated browser checks still need to run against the deployed dashboard. Cloud Storage avatar upload and scheduled database backups require upgrading to Blaze; BioMi remains on Spark.
+The dashboard buttons and theme controls were checked on GitHub Pages, but the authenticated browser checks above still need to run against Firebase. The latest rules are in GitHub and must be published to Firebase Console before style/radius saves will pass. Cloud Storage avatar upload and scheduled database backups require upgrading to Blaze; BioMi remains on Spark.
