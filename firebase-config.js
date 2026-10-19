@@ -1,8 +1,10 @@
-// Copy the web app config from Firebase Console > Project settings > Your apps.
-// This client config identifies the Firebase project; access control belongs in rules.
+// Firebase Web app client config for BioMi.
+// These identifiers are public by design; Firestore security is enforced by firestore.rules.
 export const firebaseConfig = {
-  apiKey: "PASTE_FIREBASE_WEB_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  appId: "PASTE_FIREBASE_WEB_APP_ID"
+  apiKey: "AIzaSyAajZQ-fGGKb4qoj0gCscIHsUfEcOHN9w4",
+  authDomain: "biomi-9ef92.firebaseapp.com",
+  projectId: "biomi-9ef92",
+  storageBucket: "biomi-9ef92.firebasestorage.app",
+  messagingSenderId: "278381989904",
+  appId: "1:278381989904:web:b20a6a339c56e327937a95"
 };
