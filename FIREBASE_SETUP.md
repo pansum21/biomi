@@ -15,7 +15,7 @@ The public URL format is `https://<host>/profile.html?u=<username>`. The usernam
 
 ## Firestore profile shape
 
-`profiles/{username}` contains `slug`, `ownerUid`, `displayName`, `bio`, `location`, `links`, `theme`, `published`, and `updatedAt`. Do not add email addresses or other private fields to this public profile document.
+`profiles/{username}` contains `slug`, `ownerUid`, `displayName`, optional public `avatarUrl`, `bio`, `location`, `links`, `theme`, `published`, and `updatedAt`. Do not add email addresses or other private fields to this public profile document. The avatar field accepts an HTTPS image URL; it does not upload a file.
 
 ## Verification checklist
 
@@ -24,5 +24,8 @@ The public URL format is `https://<host>/profile.html?u=<username>`. The usernam
 - An unauthenticated visitor can read a published profile and cannot read an unpublished profile.
 - A signed-in owner can edit and unpublish their profile; another account cannot change it.
 - Links reject non-web protocols in the editor and public page.
+- Profile photos load only from HTTPS URLs and fall back to initials if the image fails.
+- Export a JSON backup, import it, save it, and confirm the username and publish status are preserved.
 
 The dashboard and public page show setup guidance until real Firebase web app config and Firestore rules are installed. Cloud Storage avatar upload is deferred: current Firebase docs require the Blaze plan for Cloud Storage on new projects.
+
