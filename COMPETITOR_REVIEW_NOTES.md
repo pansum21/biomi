@@ -40,7 +40,7 @@ These are direction signals from the review pages sampled, not a claim that all 
 
 ## BioMi self-rating today
 
-**5/10 for launch readiness.** The deployed editor and public profile cover the basic job and have expanded theme controls, reorderable links, drafts and username URLs. Photo URLs and backup/restore improve profile ownership. Firebase, Email/Password auth, and GitHub Pages hosting are configured. The score stays mid-range because authenticated end-to-end flows have not been verified, the owner reports publishing the latest Firestore rules, but that state is not independently verified; Firebase Google provider activation awaits a chosen public support email, and there is no analytics, custom domain, content blocks/forms/store. This score rates the current repository build against the competitor baseline; it is not a rating of the idea.
+**5/10 for launch readiness.** The deployed editor and public profile cover the basic job and have expanded theme controls, reorderable links, drafts and username URLs. Photo URLs and backup/restore improve profile ownership. Firebase, Email/Password auth, and GitHub Pages hosting are configured. The score stays mid-range because authenticated end-to-end flows have not been verified, the owner reports publishing the latest Firestore rules, but that state is not independently verified; Firebase Google provider activation awaits a Console update; the owner approved the existing Firebase-owner Google email as the public support contact, and there is no analytics, custom domain, content blocks/forms/store. This score rates the current repository build against the competitor baseline; it is not a rating of the idea.
 
 ## Best next priorities
 
