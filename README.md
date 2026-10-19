@@ -126,10 +126,12 @@ const CONFIG = {
 
 The current `main` page is a static personal link page. The feature branch also contains an early creator dashboard and Firebase-backed MVP source:
 
-- `dashboard.html` — sign in, edit a profile, add/reorder links, choose colors, and publish.
+- `dashboard.html` — sign in, edit a profile, add/reorder links, choose colors, set an HTTPS profile photo, export/import a JSON backup, and publish.
 - `profile.html?u=<username>` — public profile for a published username.
 - `firebase-config.js` — paste in the Firebase Web app config.
 - `firestore.rules` — owner-only edits and read access for published pages.
 - `FIREBASE_SETUP.md` — setup and verification steps.
+- `COMPETITOR_REVIEW_NOTES.md` — public review scan, evidence limits, product gaps, and next priorities.
 
-These files require Firebase Authentication and Firestore to be configured. They are on `feature/theme-customizer-preview` and are not on `main` or deployed yet. The first version does not include analytics or avatar uploads.
+These files require Firebase Authentication and Firestore to be configured. They are on `feature/theme-customizer-preview` and are not on `main` or deployed yet. The first version does not include analytics or avatar uploads. Profile photo URLs and JSON backup/restore are supported; uploads are not. See the review notes for the next feature priorities.
+
