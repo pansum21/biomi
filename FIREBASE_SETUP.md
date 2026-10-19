@@ -11,7 +11,7 @@ The dashboard uses the modular Firebase Web SDK from the official CDN. It stores
 - Firestore: Standard edition, default database, `asia-south2` (Delhi)
 - Firestore rules: published in production mode from `firestore.rules`
 - Authentication: Email/Password enabled; `pansum21.github.io` authorized
-- Google sign-in: the dashboard now has a `Continue with Google` account-picker button using Firebase `signInWithPopup` and `prompt: select_account`. The provider itself is still not enabled in Firebase; Firebase requires a support email that appears on Google's OAuth sign-in/consent screen. Enable the Google provider and choose the public support contact in Firebase Authentication after the owner confirms which email to show.
+- Google sign-in: the dashboard now has a `Continue with Google` account-picker button using Firebase `signInWithPopup` and `prompt: select_account`. The provider itself is still not enabled in Firebase; Firebase requires a support email that appears on Google's OAuth sign-in/consent screen. The owner approved using the existing Firebase-owner Google account email as that public contact. Enable the Google provider and select that email in Firebase Authentication. Console access is currently blocked in this browser session.
 - Analytics, scheduled database backups, Cloud Storage uploads, and paid billing: not enabled
 
 The Firebase Web SDK config is in `firebase-config.js`. Firebase client config values are public identifiers, not Admin SDK secrets. Access control is enforced by Firestore rules.
@@ -19,7 +19,7 @@ The Firebase Web SDK config is in `firebase-config.js`. Firebase client config v
 ## Deploy and use the MVP
 
 1. Open the deployed dashboard at `https://pansum21.github.io/biomi/dashboard.html`.
-2. In Firebase Authentication, enable Google sign-in and select the public support email after the owner confirms it. `pansum21.github.io` is already authorized. Until then, email/password is the available sign-in path.
+2. In Firebase Authentication, enable Google sign-in and select the already-approved existing Firebase-owner Google email as the public support email. `pansum21.github.io` is already authorized. Until then, email/password is the available sign-in path.
 3. Create an account, save a draft, then publish to get `https://pansum21.github.io/biomi/profile.html?u=<username>`.
 
 The username is claimed once and remains fixed in this MVP. Draft pages are private; published pages are readable without signing in. Owners can edit or unpublish their own profile.
