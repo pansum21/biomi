@@ -126,11 +126,11 @@ const CONFIG = {
 
 The repository includes a hosted creator dashboard and Firebase-backed link-in-bio MVP:
 
-- `dashboard.html` — email/password sign-in, profile editing, reorderable links, live mobile preview, six color presets, eight gradients, color mode, gradient angle, link button styles/corners, HTTPS photo URL, JSON backup/restore, and publishing.
+- `dashboard.html` — Google account-picker button (provider enablement pending support-email choice), email/password fallback, profile editing, reorderable links, live mobile preview, six color presets, eight gradients, color mode, gradient angle, link button styles/corners, HTTPS photo URL, JSON backup/restore, and publishing.
 - `profile.html?u=<username>` — public page for a published profile, including saved theme styling.
 - `firebase-config.js` and `firebase-client.js` — public Firebase Web configuration and client initialization.
 - `firestore.rules` — owner-only writes and draft reads; public reads for published profiles.
 - `FIREBASE_SETUP.md` — Firebase project details and verification status.
 - `COMPETITOR_REVIEW_NOTES.md` — review scan, evidence limits, gaps, and priorities.
 
-The dashboard is available at [https://pansum21.github.io/biomi/dashboard.html](https://pansum21.github.io/biomi/dashboard.html). Firebase project `biomi-9ef92` is on Spark (no-cost); Firestore is in Delhi (`asia-south2`), Email/Password sign-in is enabled, and `pansum21.github.io` is authorized. Google sign-in remains off until the owner chooses a public support email. The updated repository rules accept optional button style and corner radius fields; those updated rules still need to be published in Firebase Console. Authenticated account creation, saving, and public profile reads still need an end-to-end live test. Analytics, image uploads, and custom domains are not included.
+The dashboard is available at [https://pansum21.github.io/biomi/dashboard.html](https://pansum21.github.io/biomi/dashboard.html). Firebase project `biomi-9ef92` is on Spark (no-cost); Firestore is in Delhi (`asia-south2`), Email/Password sign-in is enabled, and `pansum21.github.io` is authorized. Google sign-in code is deployed; the Firebase provider remains off until the owner chooses a public support email. The owner reports publishing the updated repository rules that accept optional button style and corner radius; the Console state has not been independently verified. Authenticated account creation, saving, and public profile reads still need an end-to-end live test. Analytics, image uploads, and custom domains are not included.
