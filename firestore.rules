@@ -1,0 +1,51 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /profiles/{slug} {
+      function signedIn() { return request.auth != null; }
+      function ownsCurrent() { return signedIn() && resource.data.ownerUid == request.auth.uid; }
+      function validProfile() {
+        return request.resource.data.keys().hasOnly([
+          'slug', 'ownerUid', 'displayName', 'avatarUrl', 'bio', 'location', 'links', 'theme', 'published', 'updatedAt'
+        ])
+        && request.resource.data.slug == slug
+        && slug.matches('^[a-z0-9-]{3,30}$')
+        && request.resource.data.ownerUid is string
+        && request.resource.data.displayName is string
+        && request.resource.data.displayName.size() <= 60
+        && request.resource.data.avatarUrl is string
+        && request.resource.data.avatarUrl.size() <= 500
+        && (request.resource.data.avatarUrl == '' || request.resource.data.avatarUrl.matches('^https://[^ ]+$'))
+        && request.resource.data.bio is string
+        && request.resource.data.bio.size() <= 160
+        && request.resource.data.location is string
+        && request.resource.data.location.size() <= 60
+        && request.resource.data.links is list
+        && request.resource.data.links.size() <= 25
+        && request.resource.data.theme is map
+        && request.resource.data.theme.keys().hasOnly(['a', 'b', 'angle', 'mode'])
+        && request.resource.data.theme.a is string
+        && request.resource.data.theme.a.matches('^#[0-9a-fA-F]{6}$')
+        && request.resource.data.theme.b is string
+        && request.resource.data.theme.b.matches('^#[0-9a-fA-F]{6}$')
+        && request.resource.data.theme.angle is int
+        && request.resource.data.theme.angle >= 0
+        && request.resource.data.theme.angle <= 360
+        && request.resource.data.theme.mode in ['light', 'dark']
+        && request.resource.data.published is bool;
+      }
+      allow get: if (signedIn() && !exists(/databases/$(database)/documents/profiles/$(slug)))
+        || (exists(/databases/$(database)/documents/profiles/$(slug)) && resource.data.published == true)
+        || (exists(/databases/$(database)/documents/profiles/$(slug)) && ownsCurrent());
+      allow list: if signedIn() && resource.data.ownerUid == request.auth.uid;
+      allow create: if signedIn()
+        && request.resource.data.ownerUid == request.auth.uid
+        && validProfile();
+      allow update: if ownsCurrent()
+        && request.resource.data.ownerUid == resource.data.ownerUid
+        && validProfile();
+      allow delete: if ownsCurrent();
+    }
+  }
+}
+

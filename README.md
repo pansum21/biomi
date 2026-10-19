@@ -120,3 +120,18 @@ const CONFIG = {
   vnd.youtube://watch?v=VIDEO_ID
   ```
   When tapped on iOS, Safari checks for the registered handler for `vnd.youtube`. If the YouTube app is installed, it opens. If not, the JavaScript timer detects that the page remains visible (`document.hidden === false`) and triggers navigation to the regular HTTPS URL.
+
+
+## BioMi Creator MVP (feature branch)
+
+The current `main` page is a static personal link page. The feature branch contains the creator dashboard and Firebase-backed MVP:
+
+- `dashboard.html` — email/password sign-in, profile editing, reorderable links, theme colors, HTTPS photo URL, JSON backup/restore, and publishing.
+- `profile.html?u=<username>` — public page for a published profile.
+- `firebase-config.js` — BioMi Firebase Web app config (public client identifiers only).
+- `firebase-client.js` — initializes Firebase Auth and Firestore when configured.
+- `firestore.rules` — owner-only writes and draft reads; public reads for published profiles.
+- `FIREBASE_SETUP.md` — live project configuration and verification checklist.
+- `COMPETITOR_REVIEW_NOTES.md` — public review scan, evidence limits, gaps, and priorities.
+
+A separate Firebase project (`biomi-9ef92`) is configured on the Spark no-cost plan. Firestore is in Delhi (`asia-south2`), production rules are published, Email/Password sign-in is enabled, and `pansum21.github.io` is an authorized domain. Google sign-in remains off until the owner chooses a support email to display to users. The feature branch is not yet on `main` or deployed. Analytics, image uploads, and custom domains are not included in this MVP.

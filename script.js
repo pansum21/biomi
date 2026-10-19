@@ -283,3 +283,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.removeChild(textArea);
   }
 });
+
+
+// BioMi Theme Studio preferences (saved locally by theme-editor.html)
+(() => {
+  try {
+    const settings = JSON.parse(localStorage.getItem('biomi-theme') || 'null');
+    if (!settings) return;
+    const body = document.body;
+    body.classList.add(settings.mode === 'dark' ? 'biomi-theme-dark' : 'biomi-theme-light');
+    body.classList.add('biomi-style-' + (settings.style || 'solid'));
+    body.style.setProperty('--biomi-a', settings.a || '#7057ec');
+    body.style.setProperty('--biomi-b', settings.b || '#20c9ba');
+    body.style.setProperty('--biomi-angle', (Number(settings.angle) || 135) + 'deg');
+    body.style.setProperty('--biomi-radius', settings.radius || '9px');
+  } catch (error) { /* Keep the default profile theme if stored data is unavailable. */ }
+})();

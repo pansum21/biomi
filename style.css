@@ -646,3 +646,51 @@ body {
     height: 40px;
   }
 }
+
+
+/* Theme Studio entry */
+.top-nav { align-items: center; gap: 10px; }
+.theme-nav-btn { width: auto; min-width: 40px; padding: 0 12px; gap: 7px; border-radius: 9px; color: var(--text-primary); text-decoration: none; font-size: 12px; font-weight: 650; }
+
+
+/* BioMi Theme Studio: light/dark palettes and button styles */
+body.biomi-theme-light {
+  --bg-dark: #f5f6fa;
+  --bg-card: rgba(255,255,255,.84);
+  --bg-card-hover: rgba(255,255,255,.98);
+  --border-subtle: rgba(26,37,56,.12);
+  --border-highlight: color-mix(in srgb, var(--biomi-a) 45%, white);
+  --text-primary: #1b2432;
+  --text-secondary: #536174;
+  --text-muted: #7c8797;
+  background: linear-gradient(var(--biomi-angle,135deg), color-mix(in srgb, var(--biomi-a,#7057ec) 24%, white), color-mix(in srgb, var(--biomi-b,#20c9ba) 22%, white));
+  background-attachment: fixed;
+}
+body.biomi-theme-dark {
+  --bg-dark: #0d1220;
+  --bg-card: rgba(20,27,45,.78);
+  --bg-card-hover: rgba(30,41,69,.92);
+  --border-subtle: rgba(255,255,255,.1);
+  --border-highlight: color-mix(in srgb, var(--biomi-a,#7057ec) 55%, transparent);
+  --text-primary: #f8fafc;
+  --text-secondary: #aab5c6;
+  --text-muted: #7d8aa0;
+  background: linear-gradient(var(--biomi-angle,135deg), #0b1020 0%, color-mix(in srgb, var(--biomi-a,#7057ec) 30%, #101827) 100%);
+  background-attachment: fixed;
+}
+body.biomi-theme-light .featured-card,
+body.biomi-theme-light .tree-link-card,
+body.biomi-theme-light .social-icon,
+body.biomi-theme-light .nav-icon-btn,
+body.biomi-theme-light .github-badge { background-color: var(--bg-card); box-shadow: 0 8px 24px rgba(31,42,60,.08); }
+body.biomi-theme-light .tree-link-card { border-color: var(--border-subtle); }
+body.biomi-theme-light .tree-link-card:hover { border-color: var(--biomi-a,#7057ec); }
+body.biomi-theme-light .iab-text, body.biomi-theme-light .iab-text strong { color: #7a4a00; }
+body.biomi-style-glass .tree-link-card { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.65); backdrop-filter: blur(16px); }
+body.biomi-theme-light.biomi-style-glass .tree-link-card { color: #202a38; background: rgba(255,255,255,.48); }
+body.biomi-style-outline .tree-link-card { background: transparent; border: 1px solid color-mix(in srgb, var(--biomi-a,#7057ec) 65%, white); }
+body.biomi-theme-light.biomi-style-outline .tree-link-card { color: #202a38; }
+body.biomi-theme-light .tree-link-card, body.biomi-theme-dark .tree-link-card { border-radius: var(--biomi-radius,9px); }
+@supports not (color: color-mix(in srgb, white, black)) {
+  body.biomi-theme-light { --border-highlight: rgba(112,87,236,.35); }
+}
