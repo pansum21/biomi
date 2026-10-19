@@ -1,17 +1,28 @@
 # BioMi Firebase setup (MVP)
 
-This branch adds email/password and Google sign-in, Firestore-backed profile drafts, username-based public profile URLs, and owner/public read rules. It uses the modular Firebase Web SDK from the official CDN. It does not use a custom server or store payment/private contact data.
+BioMi now has a dedicated Firebase project, a registered Web app, a standard Cloud Firestore database in Delhi (asia-south2), and published production-mode Firestore rules. The project is on Firebase Spark (no-cost). Email/Password sign-in is enabled, and `pansum21.github.io` is an authorized domain. Optional Gemini and Google Analytics were left off.
 
-## Configure the Firebase project
+The dashboard uses the modular Firebase Web SDK from the official CDN. It stores public profile data only and does not use an Admin SDK secret or a custom server for this MVP.
 
-1. Create a separate Firebase project for BioMi so it stays isolated from other apps.
-2. Add a Web app in Project settings. Copy its config into `firebase-config.js`; this file contains public client identifiers, not an Admin SDK secret.
-3. In Authentication, enable Email/Password and Google providers. Add the GitHub Pages domain `pansum21.github.io` under authorized domains.
-4. Create a Cloud Firestore database.
-5. Deploy `firestore.rules` from this repository using the Firebase CLI or paste the rules into the Firestore Rules tab and publish them.
-6. Publish the GitHub branch or deploy the same files to the chosen web host. Open `dashboard.html`, create an account, save a draft, then publish it.
+## Firebase project
 
-The public URL format is `https://<host>/profile.html?u=<username>`. The username is claimed once and remains fixed in this MVP. Draft pages are private; published pages are readable without signing in. Owners can edit or unpublish their own profile.
+- Project ID: `biomi-9ef92`
+- Web app nickname: `BioMi Web`
+- Firestore: Standard edition, default database, `asia-south2` (Delhi)
+- Firestore rules: published in production mode from `firestore.rules`
+- Authentication: Email/Password enabled; `pansum21.github.io` authorized
+- Google sign-in: not enabled. Firebase requires a public-facing project name and support email for that provider. The dashboard only shows configured sign-in methods until the owner chooses an email address to publish as the support contact.
+- Analytics, scheduled database backups, Cloud Storage uploads, and paid billing: not enabled
+
+The Firebase Web SDK config is in `firebase-config.js`. Firebase client config values are public identifiers, not Admin SDK secrets. Access control is enforced by Firestore rules.
+
+## Deploy and use the MVP
+
+1. Merge or deploy the `feature/theme-customizer-preview` branch to the chosen web host.
+2. Open `dashboard.html`, create an account with email/password, and save a draft.
+3. Publish the profile to make it available at `https://<host>/profile.html?u=<username>`.
+
+The username is claimed once and remains fixed in this MVP. Draft pages are private; published pages are readable without signing in. Owners can edit or unpublish their own profile.
 
 ## Firestore profile shape
 
@@ -27,5 +38,4 @@ The public URL format is `https://<host>/profile.html?u=<username>`. The usernam
 - Profile photos load only from HTTPS URLs and fall back to initials if the image fails.
 - Export a JSON backup, import it, save it, and confirm the username and publish status are preserved.
 
-The dashboard and public page show setup guidance until real Firebase web app config and Firestore rules are installed. Cloud Storage avatar upload is deferred: current Firebase docs require the Blaze plan for Cloud Storage on new projects.
-
+These authenticated browser checks still need to run against the deployed dashboard. Cloud Storage avatar upload and scheduled database backups require upgrading to Blaze; BioMi remains on Spark.
