@@ -16,14 +16,21 @@
 .note{max-width:760px;margin:24px auto 0;background:#fff;border:1px solid #e1e2ec;border-radius:13px;padding:14px 16px;color:#4d586b;font-size:11px;line-height:1.6}.note strong{color:#273044}
 @media(max-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:420px){.demo{padding:18px}.cards{gap:8px}.style-card{padding:10px}}
 @media(prefers-reduced-motion:reduce){.demo{transition:none}}
+
+.demo[data-shape=square] .link{border-radius:0}.demo[data-shape=sharp] .link{border-radius:4px}.demo[data-shape=rounded] .link{border-radius:12px}.demo[data-shape=capsule] .link{border-radius:999px}.demo[data-shape=circle] .link{border-radius:12px}
+.demo[data-shape=circle] .link .icon{border-radius:50%}.demo:not([data-shape=circle]) .link .icon{border-radius:8px}
+.demo[data-color=white] .link{background:#fff!important;color:#263142!important;border:1px solid #dfe3eb!important;box-shadow:0 5px 15px #26314818!important}.demo[data-color=white] .icon{background:#f0f2f7!important;color:#263142!important}
+.demo[data-color=dark] .link{background:#202738!important;color:#fff!important;border:1px solid #343e52!important;box-shadow:0 5px 15px #0003!important}.demo[data-color=dark] .icon{background:#343e52!important;color:#fff!important}
+.demo[data-color=accent] .link{background:#5546b8!important;color:#fff!important;border:1px solid transparent!important;box-shadow:0 5px 15px #26314820!important}.demo[data-color=accent] .icon{background:#ffffff30!important;color:#fff!important}
+.demo[data-color=gradient] .link{background:linear-gradient(135deg,#4e3da5,#167f75)!important;color:#fff!important;border:1px solid transparent!important;box-shadow:0 5px 15px #26314824!important}.demo[data-color=gradient] .icon{background:#ffffff30!important;color:#fff!important}
 </style>
 </head>
 <body>
 <header class="top"><div class="brand">BioMi · design sample</div><h1>Seven ways to style your link page</h1><p>Tap a style to preview it on a real profile card. Each option keeps clear labels and easy-to-tap links.</p></header>
 <main class="wrap">
 <div class="tabs" role="group" aria-label="Choose morphism style">
-<button class="tab" aria-pressed="true" data-style="glass">Glass</button><button class="tab" aria-pressed="false" data-style="water">Water</button><button class="tab" aria-pressed="false" data-style="neumorphism">Neumorphism</button><button class="tab" aria-pressed="false" data-style="clay">Clay</button><button class="tab" aria-pressed="false" data-style="aurora">Aurora</button><button class="tab" aria-pressed="false" data-style="holo">Holo</button><button class="tab" aria-pressed="false" data-style="skeuo">Skeuo</button></div>
-<section class="demo" id="demo" data-style="glass" aria-live="polite">
+<button class="tab" aria-pressed="true" data-style="glass">Glass</button><button class="tab" aria-pressed="false" data-style="water">Water</button><button class="tab" aria-pressed="false" data-style="neumorphism">Neumorphism</button><button class="tab" aria-pressed="false" data-style="clay">Clay</button><button class="tab" aria-pressed="false" data-style="aurora">Aurora</button><button class="tab" aria-pressed="false" data-style="holo">Holo</button><button class="tab" aria-pressed="false" data-style="skeuo">Skeuo</button></div><div class="tabs" role="group" aria-label="Choose button shape"><button class="tab" aria-pressed="false" data-shape="square">Square</button><button class="tab" aria-pressed="false" data-shape="sharp">Sharp</button><button class="tab" aria-pressed="true" data-shape="rounded">Rounded</button><button class="tab" aria-pressed="false" data-shape="capsule">Capsule</button><button class="tab" aria-pressed="false" data-shape="circle">Circle icons</button></div><div class="tabs" role="group" aria-label="Choose button color"><button class="tab" aria-pressed="true" data-color="auto">Auto</button><button class="tab" aria-pressed="false" data-color="white">White</button><button class="tab" aria-pressed="false" data-color="dark">Charcoal</button><button class="tab" aria-pressed="false" data-color="accent">Accent</button><button class="tab" aria-pressed="false" data-color="gradient">Gradient</button></div>
+<section class="demo" id="demo" data-shape="rounded" data-color="auto" data-style="glass" aria-live="polite">
 <div class="badge" id="styleName">Glassmorphism</div><div class="avatar" aria-hidden="true">AM</div><h2>Alex Morgan</h2><p class="bio">Designer · sharing work and ideas</p>
 <div class="links"><div class="link"><span class="icon">↗</span><span>Portfolio · recent work</span><span class="arrow">↗</span></div><div class="link"><span class="icon">◎</span><span>Instagram · daily updates</span><span class="arrow">↗</span></div><div class="link"><span class="icon">✉</span><span>Contact · say hello</span><span class="arrow">↗</span></div></div><div class="foot">Made with ♥ on BioMi</div>
 </section>
@@ -40,6 +47,6 @@
 </main>
 <script>
 const names={glass:'Glassmorphism',water:'Watermorphism',neumorphism:'Neumorphism',clay:'Claymorphism',aurora:'Aurora-morphism',holo:'Holomorphism',skeuo:'Skeuomorphism'};
-document.querySelector('.tabs').addEventListener('click',event=>{const button=event.target.closest('[data-style]');if(!button)return;const style=button.dataset.style;document.querySelector('#demo').dataset.style=style;document.querySelector('#styleName').textContent=names[style];document.querySelectorAll('.tab').forEach(tab=>tab.setAttribute('aria-pressed',String(tab===button)))});
+document.body.addEventListener('click',event=>{const button=event.target.closest('.tab');if(!button)return;const demo=document.querySelector('#demo');if(button.dataset.style){demo.dataset.style=button.dataset.style;document.querySelector('#styleName').textContent=names[button.dataset.style];document.querySelectorAll('[data-style].tab').forEach(tab=>tab.setAttribute('aria-pressed',String(tab===button)))}if(button.dataset.shape){demo.dataset.shape=button.dataset.shape;document.querySelectorAll('[data-shape]').forEach(tab=>tab.setAttribute('aria-pressed',String(tab===button)))}if(button.dataset.color){demo.dataset.color=button.dataset.color;document.querySelectorAll('[data-color]').forEach(tab=>tab.setAttribute('aria-pressed',String(tab===button)))}});
 </script>
 </body></html>
