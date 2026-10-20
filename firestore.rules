@@ -2,11 +2,18 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /profiles/{slug} {
-      function signedIn() { return request.auth != null; }
-      function ownsCurrent() { return signedIn() && resource.data.ownerUid == request.auth.uid; }
+      function signedIn() {
+        return request.auth != null;
+      }
+
+      function ownsCurrent() {
+        return signedIn() && resource.data.ownerUid == request.auth.uid;
+      }
+
       function validProfile() {
         return request.resource.data.keys().hasOnly([
-          'slug', 'ownerUid', 'displayName', 'avatarUrl', 'bio', 'location', 'links', 'theme', 'published', 'updatedAt'
+          'slug', 'ownerUid', 'displayName', 'avatarUrl', 'bio', 'location',
+          'links', 'theme', 'published', 'updatedAt'
         ])
         && request.resource.data.slug == slug
         && slug.matches('^[a-z0-9-]{3,30}$')
@@ -14,8 +21,12 @@ service cloud.firestore {
         && request.resource.data.displayName is string
         && request.resource.data.displayName.size() <= 60
         && request.resource.data.avatarUrl is string
-        && request.resource.data.avatarUrl.size() <= 500
-        && (request.resource.data.avatarUrl == '' || request.resource.data.avatarUrl.matches('^https://[^ ]+$'))
+        && request.resource.data.avatarUrl.size() <= 100000
+        && (
+          request.resource.data.avatarUrl == ''
+          || request.resource.data.avatarUrl.matches('^https://[^ ]+$')
+          || request.resource.data.avatarUrl.matches('^data:image/jpeg;base64,[A-Za-z0-9+/]+={0,2}$')
+        )
         && request.resource.data.bio is string
         && request.resource.data.bio.size() <= 160
         && request.resource.data.location is string
@@ -23,7 +34,10 @@ service cloud.firestore {
         && request.resource.data.links is list
         && request.resource.data.links.size() <= 25
         && request.resource.data.theme is map
-        && request.resource.data.theme.keys().hasOnly(['a', 'b', 'angle', 'mode', 'style', 'radius'])
+        && request.resource.data.theme.keys().hasOnly([
+          'a', 'b', 'angle', 'mode', 'style', 'radius', 'buttonColor',
+          'iconShape', 'morphism', 'buttonA', 'buttonB', 'buttonAngle'
+        ])
         && request.resource.data.theme.a is string
         && request.resource.data.theme.a.matches('^#[0-9a-fA-F]{6}$')
         && request.resource.data.theme.b is string
@@ -32,10 +46,23 @@ service cloud.firestore {
         && request.resource.data.theme.angle >= 0
         && request.resource.data.theme.angle <= 360
         && request.resource.data.theme.mode in ['light', 'dark']
-        && (!('style' in request.resource.data.theme) || request.resource.data.theme.style in ['solid', 'glass', 'outline'])
-        && (!('radius' in request.resource.data.theme) || request.resource.data.theme.radius in ['3px', '9px', '16px'])
+        && request.resource.data.theme.style in ['solid', 'glass', 'outline']
+        && request.resource.data.theme.buttonColor in ['auto', 'white', 'dark', 'accent', 'gradient']
+        && request.resource.data.theme.iconShape in ['rounded', 'circle']
+        && request.resource.data.theme.morphism in [
+          'glass', 'water', 'neumorphism', 'clay', 'aurora', 'holo', 'skeuo', 'mix'
+        ]
+        && request.resource.data.theme.buttonA.matches('^#[0-9a-fA-F]{6}$')
+        && request.resource.data.theme.buttonB.matches('^#[0-9a-fA-F]{6}$')
+        && request.resource.data.theme.buttonAngle is int
+        && request.resource.data.theme.buttonAngle >= 0
+        && request.resource.data.theme.buttonAngle <= 360
+        && request.resource.data.theme.radius in [
+          '3px', '9px', '16px', '0px', '4px', '12px', '999px'
+        ]
         && request.resource.data.published is bool;
       }
+
       allow get: if (signedIn() && !exists(/databases/$(database)/documents/profiles/$(slug)))
         || (exists(/databases/$(database)/documents/profiles/$(slug)) && resource.data.published == true)
         || (exists(/databases/$(database)/documents/profiles/$(slug)) && ownsCurrent());
@@ -50,4 +77,3 @@ service cloud.firestore {
     }
   }
 }
-
