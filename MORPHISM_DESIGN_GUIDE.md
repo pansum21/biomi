@@ -27,7 +27,8 @@ Offer all seven looks and a Mix choice in the Page theme tab. Keep button shape,
 4. Use blur sparingly and preserve a mostly opaque surface behind text.
 5. Keep effects lightweight, responsive, and static when reduced motion is requested.
 6. Apply the selected profile morphism consistently to link buttons, icons, avatar framing, and page backdrop. Preserve the user's chosen page palette, button gradient, mode, and corner radius when possible. Keep page background gradients and button gradients as separate editable settings.
-7. Offer Square, Sharp, Rounded, and Capsule for link cards; Circle applies to the compact link icon so labels remain visible. Provide Auto, White, Charcoal, Accent, and Gradient button colors; derive Accent and Gradient from the selected theme palette and adjust foregrounds for contrast.\n8. User-facing choices stay optional; do not automatically impose the effect on a profile that already has saved theme settings.
+7. Offer Square, Sharp, Rounded, and Capsule for link cards; Circle applies to the compact link icon so labels remain visible. Provide Auto, White, Charcoal, Accent, and Gradient button colors; derive Accent and Gradient from the selected theme palette and adjust foregrounds for contrast.
+8. User-facing choices stay optional; do not automatically impose the effect on a profile that already has saved theme settings.
 
 Accessibility references:
 - WCAG 2.2 Understanding Contrast (Minimum): https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
