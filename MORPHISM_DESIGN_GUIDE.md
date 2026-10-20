@@ -4,7 +4,7 @@ Updated: 2026-10-20
 
 ## Decision and evidence
 
-BioMi exposes seven optional profile surfaces: Glassmorphism, Watermorphism, Neumorphism, Claymorphism, Aurora-morphism, Holomorphism, and Skeuomorphism. These names describe visual treatments, not a ranking backed by comparable ratings.
+BioMi offers seven individual profile surfaces plus an eighth Mix option: Glassmorphism, Watermorphism, Neumorphism, Claymorphism, Aurora-morphism, Holomorphism, and Skeuomorphism. These names describe visual treatments, not a ranking backed by comparable ratings.
 
 No comparable Google Review scores were found for these design styles or the three inspiration tools. Reddit discussions provide qualitative, non-representative feedback: users describe neumorphism as attractive but sometimes impractical for usability, and warn that glass effects can create accessibility and performance costs. Treat these comments as design cautions, not as votes or market-wide preference data.
 
@@ -17,7 +17,7 @@ No comparable Google Review scores were found for these design styles or the thr
 
 ## BioMi product choice
 
-Offer all seven looks as theme choices. The visual starting point uses restrained Glassmorphism with solid, high-contrast link surfaces. Aurora and Clay are strong expressive alternatives because they add color and depth while leaving link labels on calm surfaces. This is a design recommendation from the available qualitative feedback, not a verified popularity ranking. Keep Neumorphism as an opt-in because soft shadows alone can make controls hard to identify.
+Offer all seven looks and a Mix choice in the Page theme tab. Keep button shape, color, and button gradient settings in the separate Buttons tab. The visual starting point uses restrained Glassmorphism with solid, high-contrast link surfaces. Aurora and Clay are strong expressive alternatives because they add color and depth while leaving link labels on calm surfaces. This is a design recommendation from the available qualitative feedback, not a verified popularity ranking. Keep Neumorphism as an opt-in because soft shadows alone can make controls hard to identify.
 
 ## Rules for future updates
 
@@ -26,7 +26,7 @@ Offer all seven looks as theme choices. The visual starting point uses restraine
 3. Do not communicate button/link state through shadow or color alone; use labels, outlines, and clear pressed/hover states.
 4. Use blur sparingly and preserve a mostly opaque surface behind text.
 5. Keep effects lightweight, responsive, and static when reduced motion is requested.
-6. Apply the selected profile morphism consistently to link buttons, icons, avatar framing, and page backdrop. Preserve the user's chosen palette, gradient, mode, and corner radius when possible.
+6. Apply the selected profile morphism consistently to link buttons, icons, avatar framing, and page backdrop. Preserve the user's chosen page palette, button gradient, mode, and corner radius when possible. Keep page background gradients and button gradients as separate editable settings.
 7. Offer Square, Sharp, Rounded, and Capsule for link cards; Circle applies to the compact link icon so labels remain visible. Provide Auto, White, Charcoal, Accent, and Gradient button colors; derive Accent and Gradient from the selected theme palette and adjust foregrounds for contrast.\n8. User-facing choices stay optional; do not automatically impose the effect on a profile that already has saved theme settings.
 
 Accessibility references:
