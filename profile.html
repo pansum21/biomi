@@ -48,6 +48,11 @@ body[data-button-color=accent] .link{background:var(--button-accent)!important;c
 body[data-button-color=accent] .icon{background:rgba(255,255,255,.22)!important;color:var(--button-accent-text)!important}
 body[data-button-color=gradient] .link{background:var(--button-gradient)!important;color:var(--button-gradient-text)!important;border:1px solid transparent!important;box-shadow:0 5px 15px #26314824!important}
 body[data-button-color=gradient] .icon{background:rgba(255,255,255,.22)!important;color:var(--button-gradient-text)!important}
+
+body[data-morphism=mix][data-button-color=white] .link{background:#fff!important;color:#263142!important;border:1px solid #dfe3eb!important}
+body[data-morphism=mix][data-button-color=dark] .link{background:#202738!important;color:#fff!important;border:1px solid #343e52!important}
+body[data-morphism=mix][data-button-color=accent] .link{background:var(--button-accent)!important;color:var(--button-accent-text)!important;border:1px solid transparent!important}
+body[data-morphism=mix][data-button-color=gradient] .link{background:var(--button-gradient)!important;color:var(--button-gradient-text)!important;border:1px solid transparent!important}
 </style></head><body><main class="page"><div class="avatar" id="avatar">B</div><h1 class="name" id="name">BioMi</h1><p class="bio" id="bio"></p><div class="location" id="location"></div><nav class="links" id="links" aria-label="Profile links"></nav><div class="footer">Made with ♥ on BioMi</div><div id="state" class="state hidden"></div></main>
 <script type="module">
 import {configReady,db} from './firebase-client.js';
