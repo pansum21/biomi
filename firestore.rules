@@ -36,7 +36,8 @@ service cloud.firestore {
         && request.resource.data.theme is map
         && request.resource.data.theme.keys().hasOnly([
           'a', 'b', 'angle', 'mode', 'style', 'radius', 'buttonColor',
-          'iconShape', 'morphism', 'buttonA', 'buttonB', 'buttonAngle'
+          'iconShape', 'morphism', 'buttonA', 'buttonB', 'buttonAngle',
+          'backgroundType', 'backgroundColor', 'backgroundMediaUrl', 'backgroundMediaPath', 'avatarShape', 'avatarRing'
         ])
         && request.resource.data.theme.a is string
         && request.resource.data.theme.a.matches('^#[0-9a-fA-F]{6}$')
@@ -60,6 +61,23 @@ service cloud.firestore {
         && request.resource.data.theme.radius in [
           '3px', '9px', '16px', '0px', '4px', '12px', '999px'
         ]
+        && request.resource.data.theme.get('backgroundType', 'gradient') in ['solid', 'gradient', 'image', 'video']
+        && request.resource.data.theme.get('backgroundColor', '#7057ec') is string
+        && request.resource.data.theme.get('backgroundColor', '#7057ec').matches('^#[0-9a-fA-F]{6}$')
+        && request.resource.data.theme.get('backgroundMediaUrl', '') is string
+        && request.resource.data.theme.get('backgroundMediaUrl', '').size() <= 2048
+        && (
+          request.resource.data.theme.get('backgroundMediaUrl', '') == ''
+          || request.resource.data.theme.get('backgroundMediaUrl', '').matches('^https://(firebasestorage\\.googleapis\\.com|storage\\.googleapis\\.com)/[^ ]+$')
+        )
+        && request.resource.data.theme.get('backgroundMediaPath', '') is string
+        && request.resource.data.theme.get('backgroundMediaPath', '').size() <= 300
+        && (
+          request.resource.data.theme.get('backgroundMediaPath', '') == ''
+          || request.resource.data.theme.get('backgroundMediaPath', '').matches('^profile-backgrounds/[^/]+/[a-z0-9-]{3,30}/[A-Za-z0-9._-]+$')
+        )
+        && request.resource.data.theme.get('avatarShape', 'circle') in ['circle', 'square', 'soft-square']
+        && request.resource.data.theme.get('avatarRing', 'none') in ['none', 'blue', 'gradient']
         && request.resource.data.published is bool;
       }
 
