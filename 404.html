@@ -1,0 +1,120 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#7057ec"><title>BioMi profile</title><style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#202738}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:linear-gradient(135deg,#f2eeff,#e9faf7);display:flex;justify-content:center;padding:30px 14px}.page{width:min(100%,470px);display:flex;align-items:center;flex-direction:column}.avatar{width:94px;height:94px;border-radius:50%;background:linear-gradient(135deg,#7057ec,#20c9ba);border:3px solid #fff;color:#fff;display:grid;place-items:center;font-size:28px;font-weight:850;box-shadow:0 8px 24px #26314824;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}.name{font-size:24px;letter-spacing:-.04em;margin:14px 0 4px;text-align:center}.bio{font-size:14px;text-align:center;color:#263142;background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.78);border-radius:14px;box-shadow:0 3px 12px #26314812;backdrop-filter:blur(8px);line-height:1.55;max-width:390px;margin:0 0 8px;padding:7px 12px;white-space:pre-wrap}.bio:empty,.location:empty{display:none}.location{font-size:12px;color:#263142;background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.78);border-radius:999px;box-shadow:0 3px 12px #26314812;backdrop-filter:blur(8px);margin-bottom:18px;padding:5px 11px}.links{width:100%;display:flex;flex-direction:column;gap:10px}.link{min-height:59px;padding:10px 14px;border-radius:var(--link-radius,9px);display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--link-color,#263142);background:var(--link-bg,#ffffffed);border:1px solid var(--link-border,#ffffffb5);box-shadow:var(--link-shadow,0 5px 16px #26314816);transition:transform .18s}.link:hover{transform:translateY(-2px)}.icon{width:36px;height:36px;border-radius:9px;background:var(--icon-bg,#f0edff);color:var(--icon-color,#7059df);display:grid;place-items:center;font-size:16px;font-weight:750;flex:none}.label{font-size:14px;font-weight:750;flex:1}.arrow{color:#8791a1}.footer{margin-top:18px;font-size:11px;color:#263142;background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.78);border-radius:999px;box-shadow:0 3px 12px #26314812;backdrop-filter:blur(8px);padding:5px 11px}.state{margin-top:54px;background:#fff;border:1px solid #e4e7ee;border-radius:14px;padding:22px;max-width:390px;text-align:center;color:#647084;line-height:1.55}.state a{color:#6551dd;font-weight:700}.hidden{display:none!important}body.dark{background:linear-gradient(145deg,#0c1220,#18253a);color:#f8fafc}body.dark .bio,body.dark .location,body.dark .footer{color:#f8fafc;background:rgba(17,24,39,.78);border-color:#ffffff24;box-shadow:0 3px 12px #0003}body.dark .arrow{color:#bdc7d6}
+
+.link:focus-visible{outline:3px solid #111827;outline-offset:3px}
+
+body[data-morphism=mix] .link:nth-child(8n+1){background:rgba(255,255,255,.78)!important;color:#172033!important;border:1px solid #fff!important;backdrop-filter:blur(12px);box-shadow:0 12px 28px #12213c22!important}
+body[data-morphism=mix] .link:nth-child(8n+2){background:linear-gradient(145deg,#f9feff,#cfeefa)!important;color:#12364b!important;border:1px solid #fff!important;box-shadow:inset 0 2px 3px #fff,0 6px 14px #3a789b35!important}
+body[data-morphism=mix] .link:nth-child(8n+3){background:#e8ebf2!important;color:#283143!important;border:1px solid #e8ebf2!important;box-shadow:7px 7px 15px #c4c8d1,-7px -7px 15px #fff!important}
+body[data-morphism=mix] .link:nth-child(8n+4){background:linear-gradient(145deg,#fff,#eee9ff)!important;color:#30244e!important;border:1px solid #fff!important;box-shadow:inset 0 2px 0 #fff,0 5px 0 #cfc6ee,0 10px 18px #453d7220!important}
+body[data-morphism=mix] .link:nth-child(8n+5){background:linear-gradient(110deg,#ffffffed,#f4efffef,#ecfffbef)!important;color:#252342!important;border:1px solid #fff!important;box-shadow:0 8px 25px #8171ba29!important}
+body[data-morphism=mix] .link:nth-child(8n+6){background:linear-gradient(white,white) padding-box,linear-gradient(110deg,#e2b742,#65c9bf,#9882ea,#ec8ab0) border-box!important;color:#283042!important;border:2px solid transparent!important;box-shadow:0 7px 18px #4a48611d!important}
+body[data-morphism=mix] .link:nth-child(8n+7){background:linear-gradient(#fff,#e3e6ed)!important;color:#263142!important;border:1px solid #c7ccd6!important;box-shadow:inset 0 1px 0 #fff,0 3px 0 #c0c5d0,0 7px 13px #252f431e!important}
+body[data-morphism=glass] .link{background:rgba(255,255,255,.78)!important;color:#172033!important;border:1px solid #fff!important;backdrop-filter:blur(14px);box-shadow:0 12px 28px #12213c22!important}
+body[data-morphism=glass] .icon{background:#fff!important;color:#4b3bad!important}
+
+body[data-morphism=water] .link{background:linear-gradient(145deg,#f9feff,#cfeefa)!important;color:#12364b!important;border:1px solid #fff!important;box-shadow:inset 0 2px 3px #fff,0 6px 14px #3a789b35!important}
+body[data-morphism=water] .icon{background:linear-gradient(145deg,#fff,#d6f0fa)!important;color:#14678a!important;box-shadow:inset 0 1px 2px #fff,0 2px 4px #527f9133}
+
+body[data-morphism=neumorphism] .avatar{background:#e8ebf2;border:0;color:#4d59a2;box-shadow:8px 8px 18px #c4c8d1,-8px -8px 18px #fff}
+body[data-morphism=neumorphism] .link{background:#e8ebf2!important;color:#283143!important;border:1px solid #e8ebf2!important;box-shadow:7px 7px 15px #c4c8d1,-7px -7px 15px #fff!important}
+body[data-morphism=neumorphism] .icon{background:#e8ebf2!important;color:#4d50a0!important;box-shadow:inset 3px 3px 6px #c4c8d1,inset -3px -3px 6px #fff}
+body.dark[data-morphism=neumorphism]{background:#202838!important;color:#f8fafc}
+body.dark[data-morphism=neumorphism] .link,body.dark[data-morphism=neumorphism] .avatar{background:#202838!important;color:#f8fafc!important;border-color:#202838!important;box-shadow:6px 6px 13px #141a24,-6px -6px 13px #2c374c!important}
+
+body[data-morphism=clay] .avatar{border:3px solid #fff;box-shadow:0 7px 0 #c8bdeb,0 13px 22px #453d7228}
+body[data-morphism=clay] .link{background:linear-gradient(145deg,#fff,#eee9ff)!important;color:#30244e!important;border:1px solid #fff!important;box-shadow:inset 0 2px 0 #fff,0 5px 0 #cfc6ee,0 10px 18px #453d7220!important}
+body[data-morphism=clay] .icon{background:#e3dcff!important;color:#43318a!important;box-shadow:inset 2px 2px 4px #fff,0 2px 0 #c4b8f0}
+
+body[data-morphism=aurora] .avatar{box-shadow:0 0 0 4px #fff,0 0 30px #a883ef70}
+body[data-morphism=aurora] .link{background:linear-gradient(110deg,#ffffffed,#f4efffef,#ecfffbef)!important;color:#252342!important;border:1px solid #fff!important;box-shadow:0 8px 25px #8171ba29!important}
+body[data-morphism=aurora] .icon{background:linear-gradient(135deg,#e7ddff,#c8f4eb)!important;color:#493e8f!important}
+
+body[data-morphism=holo] .link{background:linear-gradient(white,white) padding-box,linear-gradient(110deg,#e2b742,#65c9bf,#9882ea,#ec8ab0) border-box!important;color:#283042!important;border:2px solid transparent!important;box-shadow:0 7px 18px #4a48611d!important}
+body[data-morphism=holo] .icon{background:linear-gradient(135deg,#ffeaa8,#c6f3eb,#dbd4ff)!important;color:#384050!important}
+
+body[data-morphism=skeuo] .avatar{border:3px solid #fff;box-shadow:inset 0 1px 1px #fff,0 4px 0 #b6bdca,0 8px 18px #28324828}
+body[data-morphism=skeuo] .link{background:linear-gradient(#fff,#e3e6ed)!important;color:#263142!important;border:1px solid #c7ccd6!important;box-shadow:inset 0 1px 0 #fff,0 3px 0 #c0c5d0,0 7px 13px #252f431e!important}
+body[data-morphism=skeuo] .icon{background:linear-gradient(#fff,#e1e5ee)!important;color:#4a4e8d!important;border:1px solid #c9ced8}
+.link:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.link{transition:none}.link:hover{transform:none}}
+
+.link{border-radius:var(--link-radius,12px)}.icon{border-radius:var(--icon-radius,9px)}
+body[data-button-color=white] .link{background:#fff!important;color:#263142!important;border:1px solid #dfe3eb!important;box-shadow:0 5px 15px #26314818!important}
+body[data-button-color=white] .icon{background:#f0f2f7!important;color:#263142!important}
+body[data-button-color=dark] .link{background:#202738!important;color:#fff!important;border:1px solid #343e52!important;box-shadow:0 5px 15px #0003!important}
+body[data-button-color=dark] .icon{background:#343e52!important;color:#fff!important}
+body[data-button-color=accent] .link{background:var(--button-accent)!important;color:var(--button-accent-text)!important;border:1px solid transparent!important;box-shadow:0 5px 15px #26314820!important}
+body[data-button-color=accent] .icon{background:rgba(255,255,255,.22)!important;color:var(--button-accent-text)!important}
+body[data-button-color=gradient] .link{background:var(--button-gradient)!important;color:var(--button-gradient-text)!important;border:1px solid transparent!important;box-shadow:0 5px 15px #26314824!important}
+body[data-button-color=gradient] .icon{background:rgba(255,255,255,.22)!important;color:var(--button-gradient-text)!important}
+
+body[data-morphism=mix][data-button-color=white] .link{background:#fff!important;color:#263142!important;border:1px solid #dfe3eb!important}
+body[data-morphism=mix][data-button-color=dark] .link{background:#202738!important;color:#fff!important;border:1px solid #343e52!important}
+body[data-morphism=mix][data-button-color=accent] .link{background:var(--button-accent)!important;color:var(--button-accent-text)!important;border:1px solid transparent!important}
+body[data-morphism=mix][data-button-color=gradient] .link{background:var(--button-gradient)!important;color:var(--button-gradient-text)!important;border:1px solid transparent!important}
+
+/* BioMi profile refresh: the selected page morphism still styles each link */
+body{
+  background-color:#f5f4fb;
+  background-image:
+    radial-gradient(ellipse at 12% 9%,rgba(188,174,255,.3),transparent 34%),
+    radial-gradient(ellipse at 88% 85%,rgba(147,226,214,.25),transparent 34%);
+  padding:42px 16px;
+}
+.page{
+  width:min(100%,500px);
+  padding:34px 24px 26px;
+  border:1px solid rgba(255,255,255,.84);
+  border-radius:30px;
+  background:rgba(255,255,255,.5);
+  box-shadow:0 26px 75px rgba(46,40,80,.14);
+  backdrop-filter:blur(22px);
+}
+.avatar{box-shadow:0 12px 30px rgba(105,87,232,.2)}
+.name{font-size:27px;color:#282442}
+.bio{color:#5f5a76}
+.location{color:#625d78}
+.links{gap:12px}
+.link{min-height:62px;box-shadow:var(--link-shadow,0 7px 18px rgba(38,49,72,.1))}
+.link:hover{transform:translateY(-3px)}
+.icon{background:var(--icon-bg,#f0edff);color:var(--icon-color,#7059df)}
+.footer{color:#77728b}
+body.dark .page{background:rgba(17,24,39,.62);border-color:rgba(255,255,255,.12);box-shadow:0 26px 75px rgba(0,0,0,.3)}
+body.dark .name{color:#f8fafc}
+body.dark .bio,body.dark .location,body.dark .footer{color:#c1cada}
+@media(max-width:540px){
+  body{padding:20px 12px}
+  .page{padding:28px 16px 22px;border-radius:25px}
+}
+
+#avatar{position:relative;z-index:0;overflow:visible;border:0}
+#avatar img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+#avatar[data-shape=circle]{border-radius:50%}
+#avatar[data-shape=square]{border-radius:0}
+#avatar[data-shape=soft-square]{border-radius:22%}
+#avatar[data-ring=blue]{box-shadow:0 0 0 4px #2684ff,0 8px 24px #26314824}
+#avatar[data-ring=gradient]::before{content:"";position:absolute;inset:-6px;border-radius:inherit;background:linear-gradient(135deg,var(--avatar-ring-a,#7057ec),var(--avatar-ring-b,#20c9ba));z-index:-1}
+#avatar[data-ring=none]{box-shadow:0 8px 24px #26314824}
+#profileBackgroundVideo{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;pointer-events:none}
+body{isolation:isolate}
+@media(prefers-reduced-motion:reduce){#profileBackgroundVideo{display:none}}
+</style></head><body><main class="page"><div class="avatar" id="avatar">B</div><h1 class="name" id="name">BioMi</h1><p class="bio" id="bio"></p><div class="location" id="location"></div><nav class="links" id="links" aria-label="Profile links"></nav><div class="footer">Made with ♥ on BioMi</div><div id="state" class="state hidden"></div></main>
+<script type="module">
+import {configReady,db} from './firebase-client.js';
+import {doc,getDoc} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js';
+const $=s=>document.querySelector(s),pathSlug=location.pathname.split('/').filter(Boolean).pop()||'',slug=new URLSearchParams(location.search).get('u')||(/^[a-z0-9-]{3,30}$/.test(pathSlug)?pathSlug:'');
+function showState(t){$('#state').textContent=t;$('#state').classList.remove('hidden')}
+function safeUrl(raw){try{const u=new URL(raw);return ['http:','https:','mailto:','tel:'].includes(u.protocol)?u.href:''}catch{return ''}}
+
+function safeBackgroundUrl(raw){try{const u=new URL(raw||'');return u.protocol==='https:'&&['firebasestorage.googleapis.com','storage.googleapis.com'].includes(u.hostname)?u.href:''}catch{return ''}}
+function applyProfileBackground(t={},dark=false){const type=['solid','gradient','image','video'].includes(t.backgroundType)?t.backgroundType:'gradient',color=/^#[0-9a-f]{6}$/i.test(t.backgroundColor||'')?t.backgroundColor:(dark?'#111827':'#7057ec');let video=document.querySelector('#profileBackgroundVideo');if(video){video.pause();video.remove()}document.body.style.backgroundColor=color;document.body.style.backgroundSize='cover';document.body.style.backgroundPosition='center';document.body.style.backgroundRepeat='no-repeat';if(type==='solid'){document.body.style.backgroundImage='none';document.body.style.backgroundColor=color;return}const source=safeBackgroundUrl(t.backgroundMediaUrl);if(type==='image'&&source){document.body.style.backgroundImage='linear-gradient(rgba(13,19,34,.17),rgba(13,19,34,.2)),url("'+source.replace(/"/g,'%22')+'")';return}if(type==='video'&&source&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.body.style.backgroundImage='linear-gradient(rgba(13,19,34,.2),rgba(13,19,34,.25))';video=document.createElement('video');video.id='profileBackgroundVideo';video.src=source;video.muted=true;video.loop=true;video.autoplay=true;video.playsInline=true;video.setAttribute('aria-hidden','true');video.preload='metadata';document.body.insertBefore(video,document.body.firstChild);video.play().catch(()=>{});return}}
+function applyAvatarAppearance(t={}){const avatar=$('#avatar');avatar.dataset.shape=['circle','square','soft-square'].includes(t.avatarShape)?t.avatarShape:'circle';avatar.dataset.ring=['none','blue','gradient'].includes(t.avatarRing)?t.avatarRing:'none';avatar.style.setProperty('--avatar-ring-a',/^#[0-9a-f]{6}$/i.test(t.a||'')?t.a:'#7057ec');avatar.style.setProperty('--avatar-ring-b',/^#[0-9a-f]{6}$/i.test(t.b||'')?t.b:'#20c9ba')}
+function luminance(hex){const rgb=(hex.match(/[a-f0-9]{2}/gi)||[]).map(x=>parseInt(x,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return .2126*(rgb[0]||0)+.7152*(rgb[1]||0)+.0722*(rgb[2]||0)}
+function contrast(a,b){const x=luminance(a),y=luminance(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
+function safeButtonColors(a,b){a=/^#[0-9a-f]{6}$/i.test(a||'')?a:'#7057ec';b=/^#[0-9a-f]{6}$/i.test(b||'')?b:'#20c9ba';const candidates=['#111827','#ffffff'];const best=(c)=>candidates.sort((x,y)=>contrast(y,c)-contrast(x,c))[0];const solid=(c)=>{let bg=c,fg=best(bg),n=0;while(contrast(fg,bg)<4.5&&n++<8){const rgb=bg.match(/[a-f0-9]{2}/gi).map(v=>parseInt(v,16));bg='#'+rgb.map(v=>Math.round(v*.86).toString(16).padStart(2,'0')).join('');fg=best(bg)}return{bg,fg}};let g1=a,g2=b,n=0;while(Math.min(contrast('#ffffff',g1),contrast('#ffffff',g2))<4.5&&n++<8){const darken=c=>'#'+c.match(/[a-f0-9]{2}/gi).map(v=>Math.round(parseInt(v,16)*.82).toString(16).padStart(2,'0')).join('');g1=darken(g1);g2=darken(g2)}return{accent:solid(a),gradient:{a:g1,b:g2,text:'#ffffff'}}}
+function render(data){document.title=(data.displayName||'BioMi profile')+' | BioMi';$('#name').textContent=data.displayName||'BioMi';const avatar=$('#avatar'),initials=(data.displayName||'B').split(/\s+/).filter(Boolean).map(x=>x[0]).join('').slice(0,2).toUpperCase();avatar.textContent=initials;try{const image=new URL(data.avatarUrl||'');if(image.protocol==='https:'||/^data:image\/jpeg;base64,[A-Za-z0-9+/]+={0,2}$/.test(data.avatarUrl||'')){const img=document.createElement('img');img.src=image.href;img.alt='';img.referrerPolicy='no-referrer';img.onerror=()=>{img.remove();avatar.textContent=initials};avatar.replaceChildren(img)}}catch{}$('#bio').textContent=data.bio||'';$('#location').textContent=data.location||'';const t=data.theme||{};applyAvatarAppearance(t);const dark=t.mode==='dark',style=['solid','glass','outline'].includes(t.style)?t.style:'solid',morphism=['glass','water','neumorphism','clay','aurora','holo','skeuo','mix'].includes(t.morphism)?t.morphism:'glass',radius=({'3px':'0px','9px':'12px','16px':'12px'}[t.radius]||(['0px','4px','12px','999px'].includes(t.radius)?t.radius:'12px')),buttonColor=['auto','white','dark','accent','gradient'].includes(t.buttonColor)?t.buttonColor:'auto',iconShape=t.iconShape==='circle'?'circle':'rounded';document.body.classList.toggle('dark',dark);document.body.dataset.morphism=morphism;document.body.style.setProperty('--link-radius',radius);document.body.style.setProperty('--icon-radius',iconShape==='circle'?'50%':'9px');document.body.dataset.buttonColor=buttonColor;const buttonPalette=safeButtonColors(t.a||'#7057ec',t.b||'#20c9ba'),buttonGradient=safeButtonColors(t.buttonA||'#5949c8',t.buttonB||'#168b83');document.body.style.setProperty('--button-accent',buttonPalette.accent.bg);document.body.style.setProperty('--button-accent-text',buttonPalette.accent.fg);document.body.style.setProperty('--button-gradient',`linear-gradient(${Number.isInteger(Number(t.buttonAngle))?Number(t.buttonAngle):135}deg,${buttonGradient.gradient.a},${buttonGradient.gradient.b})`);document.body.style.setProperty('--button-gradient-text',buttonGradient.gradient.text);if(/^#[0-9a-f]{6}$/i.test(t.a||'')&&/^#[0-9a-f]{6}$/i.test(t.b||'')){const angle=Number.isInteger(Number(t.angle))?Number(t.angle):135;document.body.style.background=dark?'linear-gradient(145deg,#0c1220,#18253a)':`linear-gradient(${angle}deg,${t.a},${t.b})`;}applyProfileBackground(t,dark);const palette=style==='solid'?(dark?{bg:'#202a3b',color:'#f8fafc',border:'#ffffff20',shadow:'0 5px 16px #00000020',iconBg:'#35334c',iconColor:'#c9bfff'}:{bg:'#ffffffed',color:'#263142',border:'#ffffffb5',shadow:'0 5px 16px #26314816',iconBg:'#f0edff',iconColor:'#7059df'}):style==='glass'?{bg:'#ffffff29',color:'#fff',border:'#ffffff75',shadow:'none',iconBg:'#ffffff33',iconColor:'#fff'}:{bg:'transparent',color:'#fff',border:'#ffffffa8',shadow:'none',iconBg:'#ffffff22',iconColor:'#fff'};document.body.style.setProperty('--link-bg',palette.bg);document.body.style.setProperty('--link-color',palette.color);document.body.style.setProperty('--link-border',palette.border);document.body.style.setProperty('--link-shadow',palette.shadow);document.body.style.setProperty('--icon-bg',palette.iconBg);document.body.style.setProperty('--icon-color',palette.iconColor);for(const item of Array.isArray(data.links)?data.links:[]){const href=safeUrl(item.url),title=String(item.title||'').trim();if(!href||!title)continue;const a=document.createElement('a');a.className='link';a.href=href;if(/^https?:/i.test(href)){a.target='_blank';a.rel='noopener noreferrer'}const icon=document.createElement('span');icon.className='icon';icon.textContent=String(item.icon||'↗').slice(0,3);const label=document.createElement('span');label.className='label';label.textContent=title;const arrow=document.createElement('span');arrow.className='arrow';arrow.textContent='↗';a.append(icon,label,arrow);$('#links').append(a)}}
+(async()=>{if(!/^[a-z0-9-]{3,30}$/.test(slug)){showState('This BioMi username is not valid.');return}if(!configReady){showState('This profile is not connected yet. Firebase setup is required to load published profiles.');return}try{const snap=await getDoc(doc(db,'profiles',slug));if(!snap.exists()||!snap.data().published){showState('This BioMi page is private or has not been published yet.');return}render(snap.data())}catch(e){showState(e.code==='permission-denied'?'This BioMi page is private or unavailable.':'Could not load this profile right now.')}})();
+</script></body></html>
+
+
