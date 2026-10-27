@@ -13,7 +13,7 @@ service cloud.firestore {
       function validProfile() {
         return request.resource.data.keys().hasOnly([
           'slug', 'ownerUid', 'displayName', 'avatarUrl', 'bio', 'location',
-          'links', 'theme', 'published', 'updatedAt'
+          'bioMiId', 'contactEmail', 'links', 'theme', 'published', 'updatedAt'
         ])
         && request.resource.data.slug == slug
         && slug.matches('^[a-z0-9-]{3,30}$')
@@ -31,6 +31,10 @@ service cloud.firestore {
         && request.resource.data.bio.size() <= 160
         && request.resource.data.location is string
         && request.resource.data.location.size() <= 60
+        && request.resource.data.bioMiId is string
+        && request.resource.data.bioMiId.size() <= 150
+        && request.resource.data.contactEmail is string
+        && request.resource.data.contactEmail.size() <= 254
         && request.resource.data.links is list
         && request.resource.data.links.size() <= 25
         && request.resource.data.theme is map
