@@ -202,6 +202,24 @@ body{
 .layout-demo-screen small{margin-top:auto;text-align:center;color:#9388ce;font-size:6px;line-height:1}.layout-demo-viewport{overflow:hidden;min-width:0}.layout-demo-pages{display:flex;width:200%;gap:3px}.layout-demo-pages>div{display:flex;flex:0 0 calc(50% - 2px);flex-direction:column;gap:3px}.layout-demo-screen.desktop .layout-demo-pages>div{flex-direction:row;align-items:center}.layout-demo-screen.desktop .layout-demo-pages i{height:14px;min-height:14px;flex:1}
 @media(max-width:650px){.layout-comparison{padding:10px}.layout-comparison-heading{align-items:flex-start;flex-direction:column;gap:3px}.layout-comparison-heading span{text-align:left}.layout-device-grid{grid-template-columns:1fr;gap:7px}.layout-device-card{padding:9px}.layout-device-card h4{text-align:left;margin-bottom:6px}.layout-demo-pair{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.layout-demo-screen.phone{width:68px;height:126px;border-radius:10px}.layout-demo-screen.tablet{width:min(100%,118px);height:76px;border-radius:8px;padding:5px}.layout-demo-screen.desktop{width:100%;height:76px;padding:6px}.layout-demo-profile i{width:10px;height:10px}.layout-demo-links i,.layout-demo-pages i{height:10px;min-height:10px}.layout-demo-screen.desktop .layout-demo-pages i{height:18px;min-height:18px}}
 </style>
+
+<style>
+.live-status-label-mobile{display:none}
+@media(max-width:650px){
+  .main{position:relative}
+  #notice.live-notice{position:absolute;top:82px;right:13px;z-index:6;display:block;width:auto;max-width:46%;margin:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;white-space:nowrap}
+  #notice.live-notice .live-status-pill{padding:5px 8px;gap:5px;font-size:10px;box-shadow:0 2px 7px #227e5b10}
+  #notice.live-notice .live-status-icon{width:15px;height:15px;font-size:10px}
+  #notice.live-notice .live-status-label{display:none}
+  #notice.live-notice .live-status-label-mobile{display:inline}
+  .main>.title{max-width:calc(100% - 112px)}
+  #livePreview{display:flex!important;position:fixed!important;top:64px!important;left:10px!important;right:10px!important;bottom:auto!important;width:auto!important;height:42px!important;min-height:42px!important;max-height:42px!important;z-index:10!important;visibility:visible!important;opacity:1!important}
+  #livePreview.open{top:64px!important;height:min(72vh,640px)!important;min-height:320px!important;max-height:calc(100dvh - 72px)!important}
+  #previewToggle{display:flex!important;align-items:center;justify-content:center;width:100%;height:32px;min-width:0;padding:5px 10px;border:1px solid #bfd1f2;border-radius:10px;background:linear-gradient(115deg,#e5f2ff,#eee9ff);color:#40588f;font-size:11px;box-shadow:0 2px 8px #647fbd18}
+  #previewToggle .pv-head{display:block;color:#40588f;font-size:10px;font-weight:900;letter-spacing:.1em}
+  #livePreview:not(.open) .device,#livePreview:not(.open)>.hint{display:none!important}
+}
+</style>
 </head>
 <body>
 <header class="top"><div class="brand"><span class="mark">b</span>biomi</div><div class="top-actions"><span id="accountStatus" class="status">Not signed in</span><button id="signOut" class="btn hidden">Sign out</button></div></header>
@@ -243,7 +261,7 @@ import {createUserWithEmailAndPassword,signInWithEmailAndPassword,GoogleAuthProv
 import {collection,doc,getDoc,getDocs,query,where,limit,setDoc,serverTimestamp,runTransaction} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js';
 import {ref as storageRef,uploadBytes,getDownloadURL,deleteObject} from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js';
 const $=s=>document.querySelector(s), notice=$('#notice'), editor=$('#editor'), linkList=$('#linkList');let user=null,profile=null,loading=false,usernameTimer=0,usernameCheck=0,pendingBackgroundFile=null,backgroundObjectUrl='';
-function message(text,kind=''){notice.className='notice'+(kind?' '+kind:'');if(text==='Page is live.'){const pill=document.createElement('span'),icon=document.createElement('span'),label=document.createElement('span');notice.classList.add('live-notice');pill.className='live-status-pill';pill.setAttribute('role','status');icon.className='live-status-icon';icon.setAttribute('aria-hidden','true');icon.textContent='✓';label.textContent='Page is live';pill.append(icon,label);notice.replaceChildren(pill);return}notice.textContent=text}
+function message(text,kind=''){notice.className='notice'+(kind?' '+kind:'');if(text==='Page is live.'){const pill=document.createElement('span'),icon=document.createElement('span'),label=document.createElement('span');notice.classList.add('live-notice');pill.className='live-status-pill';pill.setAttribute('role','status');icon.className='live-status-icon';icon.setAttribute('aria-hidden','true');icon.textContent='✓';label.className='live-status-label';label.textContent='Page is live';const mobileLabel=document.createElement('span');mobileLabel.className='live-status-label-mobile';mobileLabel.textContent='BioMi is live';pill.append(icon,label,mobileLabel);notice.replaceChildren(pill);return}notice.textContent=text}
 function toast(text){const el=$('#toast');el.textContent=text;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
 function cleanSlug(v){return v.toLowerCase().trim().replace(/[^a-z0-9-]+/g,'-').replace(/^-+|-+$/g,'').slice(0,30)}
 function makeBioMiId(u){const created=new Date(u?.metadata?.creationTime||Date.now());const date=(Number.isNaN(created.getTime())?new Date():created).toISOString().slice(0,10).replace(/-/g,'');const unique=String(u?.uid||'').replace(/[^A-Za-z0-9_-]/g,'');return 'BioMi.ID#'+date+'-'+unique}
