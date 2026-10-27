@@ -37,7 +37,7 @@ service cloud.firestore {
         && request.resource.data.theme.keys().hasOnly([
           'a', 'b', 'angle', 'mode', 'style', 'radius', 'buttonColor',
           'iconShape', 'morphism', 'buttonA', 'buttonB', 'buttonAngle',
-          'backgroundType', 'backgroundColor', 'backgroundMediaUrl', 'backgroundMediaPath', 'avatarShape', 'avatarRing'
+          'backgroundType', 'backgroundColor', 'backgroundMediaUrl', 'backgroundMediaPath', 'avatarShape', 'avatarRing', 'linkLayout'
         ])
         && request.resource.data.theme.a is string
         && request.resource.data.theme.a.matches('^#[0-9a-fA-F]{6}$')
@@ -78,6 +78,7 @@ service cloud.firestore {
         )
         && request.resource.data.theme.get('avatarShape', 'circle') in ['circle', 'square', 'soft-square']
         && request.resource.data.theme.get('avatarRing', 'none') in ['none', 'blue', 'gradient']
+        && request.resource.data.theme.get('linkLayout', 'scroll') in ['scroll', 'slide']
         && request.resource.data.published is bool;
       }
 
