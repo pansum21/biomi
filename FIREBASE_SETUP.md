@@ -45,3 +45,6 @@ The dashboard and public profile JavaScript syntax and theme controls were check
 The dashboard can save avatar shape (circle, square, soft square), decorative blue or gradient photo rings, and solid or gradient page backgrounds. These settings are included in the updated `firestore.rules`; publish that file in Firebase Console before users save these new options.
 
 Image, GIF, and short silent video backgrounds use Firebase Cloud Storage. The `storage.rules` file limits uploads to 3 MB (GIFs are limited to 1.5 MB in the dashboard), makes assets publicly readable for published profiles, and permits an owner to manage only their own profile-background folder. To enable uploads, activate Cloud Storage for this Firebase project, publish `storage.rules`, and confirm any billing-plan change in Firebase Console. No billing plan was changed as part of this code update.
+
+
+The profile dashboard also offers a saved **Scroll list** or **Swipe cards** link layout. Both options have short animated samples; the selected mode appears in the dashboard preview and on the published profile. Older profiles default to Scroll.
