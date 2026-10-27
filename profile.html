@@ -53,6 +53,41 @@ body[data-morphism=mix][data-button-color=white] .link{background:#fff!important
 body[data-morphism=mix][data-button-color=dark] .link{background:#202738!important;color:#fff!important;border:1px solid #343e52!important}
 body[data-morphism=mix][data-button-color=accent] .link{background:var(--button-accent)!important;color:var(--button-accent-text)!important;border:1px solid transparent!important}
 body[data-morphism=mix][data-button-color=gradient] .link{background:var(--button-gradient)!important;color:var(--button-gradient-text)!important;border:1px solid transparent!important}
+
+/* BioMi profile refresh: the selected page morphism still styles each link */
+body{
+  background-color:#f5f4fb;
+  background-image:
+    radial-gradient(ellipse at 12% 9%,rgba(188,174,255,.3),transparent 34%),
+    radial-gradient(ellipse at 88% 85%,rgba(147,226,214,.25),transparent 34%);
+  padding:42px 16px;
+}
+.page{
+  width:min(100%,500px);
+  padding:34px 24px 26px;
+  border:1px solid rgba(255,255,255,.84);
+  border-radius:30px;
+  background:rgba(255,255,255,.5);
+  box-shadow:0 26px 75px rgba(46,40,80,.14);
+  backdrop-filter:blur(22px);
+}
+.avatar{box-shadow:0 12px 30px rgba(105,87,232,.2)}
+.name{font-size:27px;color:#282442}
+.bio{color:#5f5a76}
+.location{color:#625d78}
+.links{gap:12px}
+.link{min-height:62px;box-shadow:var(--link-shadow,0 7px 18px rgba(38,49,72,.1))}
+.link:hover{transform:translateY(-3px)}
+.icon{background:var(--icon-bg,#f0edff);color:var(--icon-color,#7059df)}
+.footer{color:#77728b}
+body.dark .page{background:rgba(17,24,39,.62);border-color:rgba(255,255,255,.12);box-shadow:0 26px 75px rgba(0,0,0,.3)}
+body.dark .name{color:#f8fafc}
+body.dark .bio,body.dark .location,body.dark .footer{color:#c1cada}
+@media(max-width:540px){
+  body{padding:20px 12px}
+  .page{padding:28px 16px 22px;border-radius:25px}
+}
+
 </style></head><body><main class="page"><div class="avatar" id="avatar">B</div><h1 class="name" id="name">BioMi</h1><p class="bio" id="bio"></p><div class="location" id="location"></div><nav class="links" id="links" aria-label="Profile links"></nav><div class="footer">Made with ♥ on BioMi</div><div id="state" class="state hidden"></div></main>
 <script type="module">
 import {configReady,db} from './firebase-client.js';
