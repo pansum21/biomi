@@ -1,0 +1,16 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /profile-backgrounds/{uid}/{slug}/{filename} {
+      // Public profiles can display their own uploaded background assets.
+      allow get: if true;
+      allow list: if false;
+      allow create, update: if request.auth != null
+        && request.auth.uid == uid
+        && slug.matches('^[a-z0-9-]{3,30}$')
+        && request.resource.size <= 3145728
+        && request.resource.contentType.matches('^(image/(jpeg|png|webp|gif)|video/(mp4|webm))$');
+      allow delete: if request.auth != null && request.auth.uid == uid;
+    }
+  }
+}
