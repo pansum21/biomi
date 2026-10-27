@@ -220,6 +220,14 @@ body{
   #livePreview:not(.open) .device,#livePreview:not(.open)>.hint{display:none!important}
 }
 </style>
+
+<style>
+@media(max-width:650px){
+  #account:has(#authForm.hidden){display:none!important}
+  .main>.eyebrow{font-size:11px}
+  .main>.title{font-size:25px}
+}
+</style>
 </head>
 <body>
 <header class="top"><div class="brand"><span class="mark">b</span>biomi</div><div class="top-actions"><span id="accountStatus" class="status">Not signed in</span><button id="signOut" class="btn hidden">Sign out</button></div></header>
