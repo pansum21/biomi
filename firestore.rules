@@ -98,5 +98,24 @@ service cloud.firestore {
         && validProfile();
       allow delete: if ownsCurrent();
     }
+
+    // Studio projects are private to the authenticated owner.
+    match /users/{uid}/projects/{projectId} {
+      function projectOwner() { return request.auth != null && request.auth.uid == uid; }
+      function validStudioProject() {
+        return request.resource.data.keys().hasOnly(['name','type','content','settings','createdAt','updatedAt'])
+          && request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 120
+          && request.resource.data.type in ['qr','barcode']
+          && request.resource.data.content is string && request.resource.data.content.size() <= 500000
+          && request.resource.data.settings is map && request.resource.data.settings.size() == 0
+          && request.resource.data.createdAt is timestamp
+          && request.resource.data.updatedAt == request.time;
+      }
+      allow read: if projectOwner();
+      allow create: if projectOwner() && validStudioProject() && request.resource.data.createdAt == request.time;
+      allow update: if projectOwner() && validStudioProject() && request.resource.data.createdAt == resource.data.createdAt;
+      allow delete: if projectOwner();
+    }
   }
 }
+
