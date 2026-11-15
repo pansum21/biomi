@@ -469,12 +469,6 @@ html body #shapes .theme-option{width:100%;min-width:0;min-height:46px;display:f
   html body[data-private-ready="true"] #editor>.editor-toolbar{position:sticky!important;top:188px!important;align-self:stretch;width:100%;z-index:30!important}
   html body[data-private-ready="true"] #editor>.editor-pane:not(.hidden){display:block!important;height:auto!important;max-height:none!important;min-height:0!important;overflow:visible!important}
   html body[data-private-ready="true"] #livePreview.open{overflow-y:auto!important;overscroll-behavior:contain}
-  @media(min-width:651px){
-    html body[data-private-ready="true"] .layout{height:auto!important;overflow:visible!important}
-    html body[data-private-ready="true"] .main{height:auto!important;overflow:visible!important}
-    html body[data-private-ready="true"] #editor,html body[data-private-ready="true"] #editor>.editor-pane:not(.hidden){height:auto!important;max-height:none!important;overflow:visible!important}
-    html body[data-private-ready="true"] #editor>.editor-toolbar{top:128px!important}
-  }
   .editor-tab.active{background:linear-gradient(120deg,#cfe6ff,#f4d8ef)!important;border-color:#82a9e6!important;color:#263f77!important;box-shadow:0 0 0 2px #a9c9ff75,0 5px 14px #687eae22!important}
   .settings-tab.active{background:linear-gradient(120deg,#cfe6ff,#f4d8ef)!important;border-color:#82a9e6!important;color:#263f77!important;box-shadow:inset 0 -3px 0 #718fe0,0 3px 10px #687eae1c!important}
 
@@ -504,6 +498,20 @@ html body #shapes .theme-option{width:100%;min-width:0;min-height:46px;display:f
   #livePreview.open[data-device=desktop] .screen{min-height:220px;padding:12px}
   #livePreview.open>.hint{display:block!important;font-size:9px}
   body.preview-open .main{padding-bottom:66px!important}
+}
+</style>
+<style id="full-page-scroll-desktop">
+@media(min-width:651px){
+  html body[data-private-ready="true"]{height:auto!important;overflow-x:hidden!important;overflow-y:auto!important}
+  html body[data-private-ready="true"] .layout{height:auto!important;overflow:visible!important}
+  html body[data-private-ready="true"] .main{height:auto!important;overflow:visible!important}
+  html body[data-private-ready="true"] #editor,
+  html body[data-private-ready="true"] #editor>.editor-pane:not(.hidden){height:auto!important;max-height:none!important;overflow:visible!important}
+  html body[data-private-ready="true"] #editor>.editor-toolbar{position:sticky!important;top:128px!important}
+  nav.suite-product-nav{position:sticky;top:72px;z-index:24}
+}
+@media(max-width:650px){
+  html body[data-private-ready="true"] nav.suite-product-nav{position:sticky;top:58px;z-index:24}
 }
 </style>
 </head>
