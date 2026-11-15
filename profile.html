@@ -152,8 +152,7 @@ function applyLinkTypography(element,font,size,design,animation){
  const n=Number(size);if(Number.isInteger(n)&&n>=12&&n<=24)element.style.setProperty("--link-text-size",n+"px");
 }
 function cleanLinkDescription(value){
- const words=String(value||'').trim().split(/\s+/).filter(Boolean);
- return words.slice(0,50).join(' ');
+ return Array.from(String(value||'').trim()).slice(0,50).join('');
 }
 function appendLinkContents(element,title,placement,alignment,font,size,design,animation,description=''){
  applyLinkTypography(element,font,size,design,animation);
