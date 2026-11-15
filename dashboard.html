@@ -514,6 +514,15 @@ html body #shapes .theme-option{width:100%;min-width:0;min-height:46px;display:f
   html body[data-private-ready="true"] nav.suite-product-nav{position:sticky;top:58px;z-index:24}
 }
 </style>
+<style id="only-preview-stays-pinned">
+/* Keep the editor controls in normal document flow; the live preview is the only floating surface. */
+html body[data-private-ready="true"] header.top{position:relative!important;top:auto!important}
+html body[data-private-ready="true"] nav.suite-product-nav{position:static!important;top:auto!important;z-index:auto!important}
+html body[data-private-ready="true"] #editor>.editor-toolbar{position:static!important;top:auto!important;z-index:auto!important}
+@media(max-width:650px){
+  html body[data-private-ready="true"] #editor>.editor-toolbar{position:static!important;top:auto!important}
+}
+</style>
 </head>
 <body>
 <header class="top"><div class="brand"><span class="mark">b</span>biomi</div><div class="top-actions"><a class="btn suite-settings-link" data-suite-settings href="/settings?return=%2Fbiomi%2Fdashboard">⚙ Settings</a><span id="accountStatus" class="status">Not signed in</span><button id="signOut" class="btn hidden">Sign out</button></div></header><nav class="suite-product-nav suite-bio-products" aria-label="Switch studio tool"><a href="/studio">QBar Studio</a><a href="/biomi/dashboard" aria-current="page">BioMi</a><a href="/pixelmint">PixelMint</a></nav>
