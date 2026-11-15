@@ -461,9 +461,19 @@ html body #shapes .theme-option{width:100%;min-width:0;min-height:46px;display:f
 @media(max-width:650px){.solid-background-picker input[type=color],.page-gradient-color input[type=color]{height:52px}.color-hex-input{height:38px;font-size:12px}.page-gradient-color-grid{gap:8px}.solid-background-color-row{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:8px}#livePreview{top:104px!important}#livePreview.open{top:104px!important;max-height:calc(100dvh - 112px)!important}}
 </style><style id="mobile-floating-preview">
 @media(max-width:650px){
-  /* Keep section/action controls pinned while the selected editor pane scrolls. */
-  #editor{overflow:visible!important}
-  .editor-toolbar{position:-webkit-sticky!important;position:sticky!important;top:188px!important;align-self:flex-start;width:100%;z-index:30!important}
+  /* Lock the signed-in mobile workspace; scroll only the active editor/preview panes. */
+  html body[data-private-ready="true"]{height:100dvh;overflow:hidden!important}
+  html body[data-private-ready="true"] .layout{height:calc(100dvh - 58px);min-height:0!important;overflow:hidden!important}
+  html body[data-private-ready="true"] .main{box-sizing:border-box;height:100%;min-height:0;display:flex;flex-direction:column;overflow:hidden!important;padding:64px 13px 12px!important}
+  html body[data-private-ready="true"] .main>.eyebrow,
+  html body[data-private-ready="true"] .main>.title,
+  html body[data-private-ready="true"] .main>.sub,
+  html body[data-private-ready="true"] .main>#notice{flex:0 0 auto}
+  html body[data-private-ready="true"] #editor{display:flex!important;flex:1 1 auto;flex-direction:column;min-height:0;overflow:hidden!important}
+  html body[data-private-ready="true"] #editor>.editor-toolbar{position:relative!important;top:auto!important;align-self:stretch;width:100%;flex:0 0 auto;z-index:30!important}
+  html body[data-private-ready="true"] #editor>.editor-pane:not(.hidden){flex:1 1 auto;min-height:0;overflow-y:auto!important;overscroll-behavior:contain;scrollbar-width:thin}
+  html body[data-private-ready="true"] #editor>.editor-pane:not(.hidden)>.card{margin-bottom:0}
+  html body[data-private-ready="true"] #livePreview.open{overflow-y:auto!important;overscroll-behavior:contain}
   .editor-tab.active{background:linear-gradient(120deg,#cfe6ff,#f4d8ef)!important;border-color:#82a9e6!important;color:#263f77!important;box-shadow:0 0 0 2px #a9c9ff75,0 5px 14px #687eae22!important}
   .settings-tab.active{background:linear-gradient(120deg,#cfe6ff,#f4d8ef)!important;border-color:#82a9e6!important;color:#263f77!important;box-shadow:inset 0 -3px 0 #718fe0,0 3px 10px #687eae1c!important}
 
